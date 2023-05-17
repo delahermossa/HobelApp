@@ -17,18 +17,18 @@
 
         if ($_SESSION["rol"] == "administrador") {
         ?>
-          <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/prendas/">Prendas</a>
-          <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/clientes/">Clientes <span class="badge bg-success">New</span></a>
-          <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/compras/">Compras</a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/prendas/">Prendas</a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/clientes/">Clientes <span class="badge bg-success">New</span></a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/">Compras</a>
         
 
         <?php
         }
         ?>
         
-        <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/compras/mis_compras.php">Mis compras</a>
-        <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/compras/comprar_prenda.php">Nueva compra</a>
-        <a class="nav-link" href="http://localhost/06_base_datos/tienda_ropa/public/desconectarse.php">Desconectarse</a>
+        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/mis_compras.php">Mis compras</a>
+        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/comprar_prenda.php">Nueva compra</a>
+        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/desconectarse.php">Desconectarse</a>
         <a class="nav-link" href="">Bienvenido <?php echo $_SESSION["usuario"] ?></a>
 
 
