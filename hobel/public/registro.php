@@ -7,6 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar_cliente</title>
+     <!-- Cogemos la fuente Raleway de google fonts para nuestro css -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-XpHk9XNVIggnS6JNbuwPi+94PQdCrK4Ti4rqD4tPXm+lB1Hpl9fzq/t+jIToEAwGlFmboG5B1Z5c5Rfln0W8Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
@@ -60,11 +71,25 @@
         }
     }
     ?>
+        <header class="headerregistro">
+                <nav style="height: fit-content;">
+                    <div class="logo">
+                        <img class="logorotate" src="../resources/img/logohobel.png" alt="" style="max-width: 150px;">
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="Buscar servicios..." style="background-color: lightslategrey;">
+                        <button type="submit" class="cta">Buscar</button>
+                    </div>
+                    <div class="menu">
+                        <ul>
 
+                            <li><a href="index.html" class="cta" style="color: white;">Acceder</a></li>
+                        </ul>
+                    </div>
+                </nav>
     <div class="container">
-       
-        <h1>Nuevo cliente</h1>
-        <div class="row">
+    
+               <div class="row">
             <div class="col-6">
 
                 <!--Formulario-->
@@ -126,6 +151,7 @@
         </div>
 
     </div>
+    </header>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

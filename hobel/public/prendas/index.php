@@ -24,8 +24,8 @@
 
 
     <div class="container">
-        <h1>Listado de prendas</h1>
-        <a class="btn btn-primary mb-3" href="insertar_prenda.php">Nueva prenda</a>
+        <h1>Listado de servicios</h1>
+        <a class="btn btn-primary mb-3" href="insertar_prenda.php">Nuevo servicio</a>
 
         <div class="row">
             <div class="col-9">
