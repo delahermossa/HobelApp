@@ -6,38 +6,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar prenda</title>
+    <title>Insertar servicio</title>
 </head>
 
 <body>
     <!-- Respuesta al formulario-->
     <?php
-
-    /*EJERCICIO
-    - Elegir la talla con un select (XS, S, M, L, XL) (añadir check en la BD)
-    - Categoría con select (Camisetas, Pantalones, Accesorios) (añadir check en la BD)*/
     require "../../util/database.php";
     require "../../util/control_acceso.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $temp_nombre = depurar($_POST["nombre"]);
         $descripcion = $_POST["descripcion"];
+        $temp_precio = depurar($_POST["precio"]);
         if (isset($_POST["categoria"])) {
             $categoria = $_POST["categoria"];
         } else {
             $categoria = "";
         }
-        $temp_precio = depurar($_POST["precio"]);
-        
 
         $file_name = $_FILES["imagen"]["name"];
         $file_temp_name = $_FILES["imagen"]["tmp_name"];
-        $path = "../../resources/images/prendas/" . $file_name;
+        $path = "../../resources/images/servicios/" . $file_name;
 
 
 
-        /**Aqui se completa categoria por lo que se inserta en la tabla el servicio con la categoria */
-        $imagen = "/resources/images/prendas/" . $file_name;
+        /**Aqui se completa categoria por lo que se inserta en la tabla la servicios con la categoria */
+        $imagen = "/resources/images/servicios/" . $file_name;
         if (!empty($temp_nombre) && !empty($descripcion) && !empty($temp_precio)) {
 
             $err_nombre = "El nombre es obligatorio";
@@ -51,13 +46,12 @@
             }
 
             //Insertamos la prenda en la base de datos
-            $imagen = "/resources/images/prendas/" . $file_name;
+            $imagen = "/resources/images/servicios/" . $file_name;
             if (!empty($categoria)) {
                 $sql = "INSERT INTO servicios (nombre, descripcion, categoria, precio, imagen) 
                 VALUES ('$temp_nombre','$descripcion','$categoria','$temp_precio','$imagen')";
             } else {
-                //Aqui se inserta la prenda sin la categoria ya que no es obligatoria en la tabla
-                $sql = "INSERT INTO prendas (nombre, descripcion, precio,imagen ) 
+                $sql = "INSERT INTO servicios (nombre, descripcion, precio,imagen ) 
                 VALUES ('$temp_nombre','$descripcion','$temp_precio','$imagen')";
             }
 
@@ -66,13 +60,13 @@
 
     ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Éxito!</strong> Prenda insertada correctamente
+                    <strong>Éxito!</strong> Servicio insertado correctamente
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
 
     <?php
             } else {
-                echo "<p>Error al insertar la prenda</p>";
+                echo "<p>Error al insertar el servicio</p>";
             }
         }
     }
@@ -90,7 +84,7 @@
 
     <div class="container">
         <?php require '../header.php' ?>
-        <h1>Nueva prenda</h1>
+        <h1>Nuevo servicio</h1>
         <div class="row">
             <div class="col-6">
 
@@ -113,22 +107,29 @@
                     <div class="form-group mb-3">
                         <label class="form-label">Descripción</label>
                         <input class="form-control" type="text" name="descripcion">
-
                     </div>
 
 
                     <div class="form-group mb-3">
                         <select class="form-select" name="categoria">Categoría
                             <option value="" selected disabled hidden>Selecciona una categoría</option>
-                            <option value="limpieza">Limpieza de hogar</option>
-                            <option value="manitas">Manitas</option>
-                            <option value="manicura">Manicura</option>
-                            <option value="peluqueria">Peluquería</option>
-                            <option value="ciudador">Cuidador</option>
-                            <option value="chef">Chef</option>
+                            <option value="limpieza">Limpieza</option>
+                            <option value="manitas ">Manitas</option>
+                            <option value="chef ">Chef</option>
                             <option value="entrenador">Entrenador personal</option>
+                            <option value="profesor_padel">Profesor de padel</option>
+                            <option value="profesor_matematicas">Profesor de matemáticas</option>
+                            <option value="profesor_lengua">Profesor de lengua</option>
+                            <option value="peluqueria">Peluquería</option>
+                            <option value="peluqueria">Peluquería</option>
+                            <option value="manicura">Manicura</option>
+                            <option value="ciudado_mascotas">Cuidado de mascotas</option>
+                            <option value="ciudado_mascotas">Peluquería de mascotas</option>
+                            <option value="ciudado_ancianos">Cuidado de niños</option>
 
                         </select>
+
+
 
                     </div>
 

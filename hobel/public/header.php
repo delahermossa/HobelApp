@@ -16,8 +16,8 @@
         <?php
         if ($_SESSION["rol"] == "administrador") {
           echo '
-          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/prendas/">Alta Servicio</a>
-          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/clientes/">Clientes <span class="badge bg-success">New</span></a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/servicios/">Alta Servicio</a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/clientes/">Clientes</a>
           <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/">Agenda</a>
           ';
         }
