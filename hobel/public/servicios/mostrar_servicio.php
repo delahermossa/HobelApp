@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar prenda</title>
+    <title>Mostrar servicio</title>
 </head>
 
 <body>
@@ -16,20 +16,20 @@
     <?php require "../../util/database.php" ?>
     <?php require "../header.php" ?>
 
-    <h1>Ver prenda</h1>
+    <h1>Ver servicio</h1>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET["id"];
 
-        $sql = "SELECT * FROM prendas WHERE id = '$id'";
+        $sql = "SELECT * FROM servicios WHERE id = '$id'";
 
         $resultado = $con->query($sql);
 
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $nombre = $row["nombre"];
-                $talla = $row["talla"];
+                $descripcion = $row["descripcion"];
                 $categoria = $row["categoria"];
                 $precio = $row["precio"];
                 $imagen = $row["imagen"];
@@ -43,17 +43,18 @@
         <div class="row">
             <div class="col-4">
                 <p>Nombre: <?php echo $nombre ?></p>
-                <p>Talla: <?php echo $talla ?></p>
-                <p>Precio: <?php echo $precio ?></p>
+                <p>Descripcion: <?php echo $descripcion ?></p>
                 <p>Categoría: <?php echo $categoria ?></p>
-                <form action="editar_prenda.php" method="get">
+                <p>Precio: <?php echo $precio ?></p>
+                
+                <form action="editar_servicio.php" method="get">
                     <input type="hidden" name="id" value="<?php echo $id ?>">
                     <input type="hidden" name="nombre" value="<?php echo $nombre ?>">
-                    <input type="hidden" name="talla" value="<?php echo $talla ?>">
-                    <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                    <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
                     <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                    <a class="btn btn-secondary" href="index.php">Volver</a>
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                    <a class="btn btn-info" href="index.php">Volver</a>
+                    <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
             </div>
             <div class="col-4">

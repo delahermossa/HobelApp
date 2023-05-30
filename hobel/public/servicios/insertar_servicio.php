@@ -81,9 +81,9 @@
     }
     ?>
 
-
+<?php require '../header.php' ?>
     <div class="container">
-        <?php require '../header.php' ?>
+        
         <h1>Nuevo servicio</h1>
         <div class="row">
             <div class="col-6">
@@ -145,8 +145,8 @@
                     </div>
 
 
-                    <button class="btn btn-primary mt-3" type="submit">Crear</button>
-                    <a class="btn btn-secondary mt-3" href="index.php">Volver</a>
+                    <button class="btn btn-info mt-3" type="submit">Crear</button>
+                    <a class="btn btn-warning mt-3" href="index.php">Volver</a>
 
                 </form>
 

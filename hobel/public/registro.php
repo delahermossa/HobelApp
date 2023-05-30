@@ -37,17 +37,12 @@
         $direccion = $_POST["direccion"];
 
 
-        /**Aqui se completa categoria por lo que se inserta en la tabla el cliente con el segundo apellido */
         if (
             !empty($usuario) && !empty($nombre) && !empty($contrasena) &&
             !empty($apellido) &&
             !empty($fechaNacimiento) &&
             !empty($rol)
         ) {
-
-
-
-            $apellido = !empty($apellido) ? "'$apellido'" : "NULL";
  
             $sql = "INSERT INTO clientes (usuario, email, contrasena, nombre, apellido, fechaNacimiento, rol, direccion) 
             VALUES ('$usuario','$email', '$hash_contrasena','$nombre','$apellido','$fechaNacimiento','$rol','$direccion')";
@@ -91,7 +86,7 @@
     <div class="container">
     
                <div class="row">
-            <div class="col-6">
+            <div class="col-50">
 
                 <!--Formulario-->
                 <form action="" method="post" enctype="multipart/form-data">
@@ -163,3 +158,21 @@
 </body>
 
 </html>
+<style>
+     .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            overflow-y: scroll;
+            max-height: 80vh; /* Ajusta la altura máxima según tus necesidades */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            margin-top: 10px;
+        }
+    </style>

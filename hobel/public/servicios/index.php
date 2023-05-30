@@ -7,6 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Cogemos la fuente Raleway de google fonts para nuestro css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-XpHk9XNVIggnS6JNbuwPi+94PQdCrK4Ti4rqD4tPXm+lB1Hpl9fzq/t+jIToEAwGlFmboG5B1Z5c5Rfln0W8Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="estilos.css">
 
     <title>Servicios Index</title>
@@ -23,6 +31,8 @@
     <?php
     require "../../util/database.php";
     ?>
+
+    
 
 
     <div class="container">
@@ -41,9 +51,6 @@
                             <th>Precio</th>
                             <th></th>
                             <th></th>
-                           
-                           
-
 
                         </tr>
 
@@ -101,11 +108,11 @@
                                     <td><?php echo $nombre ?></td>
                                     <td><?php echo $descripcion ?></td>
                                     <td><?php echo $categoria ?></td>
-                                    <td><?php echo $precio ?></td>
+                                    <td><?php echo $precio . '€'?></td>
 
 
                                     <td>
-                                        <form action="./mostrar_prenda.php" method="get">
+                                        <form action="./mostrar_servicio.php" method="get">
                                             <button class="btn btn-info" type="submit">Ver</button>
                                             <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                         </form>
