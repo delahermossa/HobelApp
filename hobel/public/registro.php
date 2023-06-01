@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar_cliente</title>
      <!-- Cogemos la fuente Raleway de google fonts para nuestro css -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +17,8 @@
 
 
     <link rel="stylesheet" href="estilos.css">
+    <title>Registro</title>
+
 </head>
 
 <body>
@@ -85,12 +86,11 @@
                 </nav>
     <div class="container">
     
-               <div class="row">
-            <div class="col-50">
-
+        <h1>   </h1>
                 <!--Formulario-->
+        <div class="formularioregistro" id="formularioregistro">
                 <form action="" method="post" enctype="multipart/form-data">
-
+                <div class="col-20">
                     <div class="form-group mb-3">
                         <label class="form-label">Usuario</label>
                         <input class="form-control" type="text" name="usuario" id="usuario">
@@ -135,13 +135,9 @@
                         <input class="form-control" type="text" name="direccion" id="direccion">
                     </div>
 
-
-
-
-
                     <button class="btn btn-primary mt-3" type="submit" name="btnCrear">Registrarse</button>
                     <a class="btn btn-secondary mt-3" href="index.php">Volver</a>
-
+                </div>
                 </form>
 
             </div>
@@ -149,8 +145,66 @@
         </div>
 
     </div>
+    <!-- Recurso online SVG wave generator -->
+    <div class="svg-header" style="height: 250px; overflow: hidden;"><svg viewBox="0 0 500 150"
+                preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                <path d="M-0.00,49.99 C149.89,149.99 352.68,-49.99 499.65,49.99 L499.65,149.99 L-0.00,149.99 Z"
+                    style="stroke: none; fill: rgb(255, 255, 255);"></path>
+            </svg></div>
     </header>
+    <section class="ola-contenedor website">
 
+
+<div class="contenedor-textos-main">
+</section>
+</section>
+     <!--  ubicaciones -->
+     <section class="galeria-iniciosesion">
+        <div class="contenedor">
+            <h3 class="titulo" style="text-align: center;">¿Dónde trabajamos?</h3>
+            <article class="galeria-contenedor">
+                <img src="../resources/img/malagalocation.webp" alt="">
+
+                <img src="../resources/img/madridlocation.webp" alt="">
+                <img src="../resources/img/barcelonalocation.webp" alt="">
+                <img src="../resources/img/valencialocation.webp" alt="">
+                <img src="../resources/img/bilbaolocation.webp" alt="">
+                <img src="../resources/img/cadizlocation.webp" alt="">
+
+            </article>
+        </div>
+    </section>
+    <!-- Contenedor ultima sección de la página cursos privados -->
+    <section class="info-last">
+        <div class="contenedor last-section">
+            <div class="contenedor-textos-main">
+                <h2 class="titulo left" style="text-align: left;">Todos los profesionales a tu alcance</h2>
+                <p class="parrafo">Disponemos de todos los servicios que puedas imaginar y m
+            </div>
+
+            <img class="" src="../resources/img/amigos.webp" alt="">
+
+
+
+        </div>
+        <!-- Recurso online svg wave generator (de https://smooth.ie/blogs/news/svg-wavey-transitions-between-sections) -->
+        <div class="svg-ola" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150"
+                preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                <path d="M-0.00,49.99 C149.89,149.99 352.68,-49.99 499.65,49.99 L499.65,149.99 L-0.00,149.99 Z"
+                    style="stroke: none; fill: #21895bd3;"></path>
+            </svg></div>
+    </section>
+    <footer>
+        
+        <div class="privacidad">
+            <a href="https://www.cookiepolicygenerator.com/live.php?token=SJsJNyfJCCVkpaHAkdwRIoVjJov35uAa"
+            ">Política de privacidad</a>
+          </div>
+          <div class="nota-pie">
+            <p>Este sitio web cumple con las normativas establecidas en la Ley de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI) y en el Reglamento General de Protección de Datos (RGPD).</p>
+          </div>
+    </footer>
+    <script src="registro.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
@@ -160,12 +214,27 @@
 </html>
 <style>
      .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 10px;
-            overflow-y: scroll;
-            max-height: 80vh; /* Ajusta la altura máxima según tus necesidades */
-        }
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 80vh;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    }
+
+    .container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 3px;
+    }
 
         .form-group {
             margin-bottom: 20px;

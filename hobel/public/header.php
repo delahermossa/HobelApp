@@ -18,13 +18,13 @@
           echo '
           <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/servicios/">Alta Servicio</a>
           <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/clientes/">Clientes</a>
-          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/">Agenda</a>
+          <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/citas/">Agenda</a>
           ';
         }
         ?>
 
-        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/mis_compras.php">Mis citas</a>
-        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/compras/comprar_prenda.php">Servicios disponibles</a>
+        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/citas/mis_citas.php">Mis citas</a>
+        <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/citas/contratar_servicio.php">Servicios disponibles</a>
         <a class="nav-link" href="http://localhost/hobelapp/HobelApp/hobel/public/desconectarse.php">Desconectarse</a>
         <a class="nav-link" href=""><?php echo "Bienvenido " . $_SESSION["usuario"]; ?></a>
       </div>

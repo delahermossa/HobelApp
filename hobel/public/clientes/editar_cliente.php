@@ -24,32 +24,34 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET["id"];
         $usuario = $_GET["usuario"];
-        $nombre = $_GET["nombre"];
+        $email = $_GET["email"];
         $contrasena = $_GET["contrasena"];
-        $apellido1 = $_GET["apellido1"];
-        $apellido2 = $_GET["apellido2"];
+        $nombre = $_GET["nombre"];
+        $apellido = $_GET["apellido"];
         $fechaNacimiento = $_GET["fechaNacimiento"];
         $rol = $_GET["rol"];
+        $direccion = $_GET["direccion"];
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["id"];
         $usuario = $_POST["usuario"];
-        $nombre = $_POST["nombre"];
+        $email = $_POST["email"];
         $contrasena = $_POST["contrasena"];
-        $apellido1 = $_POST["apellido1"];
-        $apellido2 = $_POST["apellido2"];
+        $nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
         $fechaNacimiento = $_POST["fechaNacimiento"];
         $rol = $_POST["rol"];
-
+        $direccion = $_POST["direccion"];
 
         $sql = "UPDATE clientes  SET usuario = '$usuario', 
                                     nombre = '$nombre',
+                                    email = '$email',
                                     contrasena = '$contrasena',
-                                    apellido1 = '$apellido1',
-                                    apellido2 = '$apellido2',
+                                    apellido = '$apellido',
                                     fechaNacimiento ='$fechaNacimiento',
-                                    rol='$rol'
+                                    rol='$rol',
+                                    direccion = '$direccion'
                                 WHERE id = '$id'";
 
         if ($con->query($sql) == "TRUE") {
@@ -71,7 +73,7 @@
     ?>
     <div class="container">
 
-        <h1>Nuevo cliente</h1>
+        <h1>Editar cliente</h1>
         <div class="row">
             <div class="col-6">
 
@@ -81,6 +83,10 @@
                     <div class="form-group mb-3">
                         <label class="form-label">Usuario</label>
                         <input class="form-control" type="text" name="usuario" id="usuario" value="<?php echo $usuario ?>">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="text" name="email" id="email" value="<?php echo $email ?>">
                     </div>
 
                     <div class="form-group mb-3">
@@ -94,15 +100,9 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label class="form-label">Primer apellido</label>
-                        <input class="form-control" type="text" name="apellido1" id="apellido1" value="<?php echo $apellido1 ?>">
+                        <label class="form-label">Apellido</label>
+                        <input class="form-control" type="text" name="apellido" id="apellido" value="<?php echo $apellido ?>">
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">Segundo apellido</label>
-                        <input class="form-control" type="text" name="apellido2" id="apellido2" value="<?php echo $apellido2 ?>">
-                    </div>
-
 
                     <div class="form-group mb-3">
                         <label class="form-label">Fecha de nacimiento</label>
@@ -119,6 +119,10 @@
 
                         </select>
 
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $direccion ?>">
                     </div>
 
 

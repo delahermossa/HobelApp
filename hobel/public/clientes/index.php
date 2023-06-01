@@ -10,30 +10,31 @@
 </head>
 
 <body>
+    <div>
+    <?php require '../../util/control_acceso.php' ?>
+
+<?php require '../../util/database.php' ?>
+    <?php require '../header.php' ?>
+    </div>
     <div class="container">
-        <?php require '../../util/control_acceso.php' ?>
-
-        <?php require '../../util/database.php' ?>
-
-        <?php require '../header.php' ?>
         <br>
         <h1>Listado de clientes</h1>
 
         <div class="row">
-            <div class="col-9">
+            <div class="col-20">
                 <br>
-                <a class="btn btn-primary" href="insertar_cliente.php">Nuevo cliente</a>
+                <a class="btn btn-warning" href="insertar_cliente.php">Nuevo cliente</a>
                 <br><br>
-                <table class="table table-striped table-hover">
-                    <thead class="table-dark">
+                <table class="table table-striped table-hover no-margin-table">
+                    <thead class="table-info">
                         <tr>
                             <th>Usuario</th>
-                            <!--<th>Avatar</th>-->
+                            <th>Email</th>
                             <th>Nombre</th>
-                            <th>Primer apellido</th>
-                            <th>Segundo apellido</th>
+                            <th>Apellido</th>
                             <th>Fecha de nacimiento</th>
                             <th>Rol</th>
+                            <th>Dirección</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -53,7 +54,7 @@
                                     unlink("../.." . $avatar);
                                 }*/
 
-                            //  Consulta para borrar la prenda
+                            //  Consulta para borrar el cliente
                             $sql = "DELETE FROM clientes WHERE id = '$id'";
 
                             if ($con->query($sql)) {
@@ -74,7 +75,7 @@
                         }
                         ?>
 
-                        <?php   //  Seleccionar todas las prendas
+                        <?php   //  Seleccionar todos los clientes
                         $sql = "SELECT * FROM clientes";
                         $resultado = $con->query($sql);
 
@@ -82,11 +83,12 @@
                             while ($row = $resultado->fetch_assoc()) {
                                 $id = $row["id"];
                                 $usuario = $row["usuario"];
+                                $email = $row["email"];
                                 $nombre = $row["nombre"];
-                                $apellido1 = $row["apellido1"];
-                                $apellido2 = $row["apellido2"];
+                                $apellido = $row["apellido"];
                                 $fechaNacimiento = $row["fechaNacimiento"];
                                 $rol = $row["rol"];
+                                $direccion = $row["direccion"];
                                 //$avatar = $fila["avatar"];
                         ?>
                                 <tr>
@@ -94,21 +96,21 @@
                                     <!--<td>
                                             <img width="50" height="60" src="../..<?/*php echo $avatar*/ ?>">
                                         </td>-->
+                                    <td><?php echo $email ?></td>
                                     <td><?php echo $nombre ?></td>
-                                    <td><?php echo $apellido1 ?></td>
-                                    <td><?php echo $apellido2 ?></td>
                                     <td><?php echo $fechaNacimiento ?></td>
                                     <td><?php echo $rol ?></td>
+                                    <td><?php echo $direccion ?></td>
 
                                     <td>
                                         <form action="mostrar_cliente.php" method="get">
-                                            <button class="btn btn-primary" type="submit">Ver</button>
+                                            <button class="btn btn-info" type="submit">Ver</button>
                                             <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                         </form>
                                     </td>
                                     <td>
                                         <form action="" method="post">
-                                            <button class="btn btn-danger" type="submit">Borrar</button>
+                                            <button class="btn btn-warning" type="submit">Borrar</button>
                                             <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                         </form>
                                     </td>
@@ -120,9 +122,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-3">
+            <!-- <div class="col-3">
                 <img width="200" heigth="200" src="../../resources/images/ropa.jpg">
-            </div>
+            </div> -->
         </div>
     </div>
 

@@ -28,6 +28,7 @@
    
     ?>
     
+    
    
 
 
@@ -82,7 +83,7 @@
         </nav>
 
     <div class="container">
-        <h1>Inicia sesion</h1>
+        <h1>   </h1>
 
         <div class="formularioregistro" id="formularioregistro">
             <div class="col-20">

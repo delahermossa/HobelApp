@@ -29,14 +29,13 @@
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $usuario = $row["usuario"];
+                $email = $row["email"];
                 $contrasena = $row["contrasena"];
                 $nombre = $row["nombre"];
-                $apellido1 = $row["apellido1"];
-                $apellido2= $row["apellido2"];
+                $apellido = $row["apellido"];
                 $fechaNacimiento= $row["fechaNacimiento"];
                 $rol = $row["rol"];
-
-
+                $direccion= $row["direccion"];
             }
         }
     }
@@ -47,24 +46,23 @@
         <div class="row">
             <div class="col-4">
                 <p>Usuario: <?php echo $usuario ?></p>
-                <p>Contraseña: <?php echo $contrasena ?></p>
+                <p>Email: <?php echo $email ?></p>
                 <p>Nombre: <?php echo $nombre ?></p>
-                <p>Apellido 1: <?php echo $apellido1 ?></p>
-                <p>Apellido 2: <?php echo $apellido2 ?></p>
+                <p>Apellido: <?php echo $apellido ?></p>
                 <p>Fecha nacimiento: <?php echo $fechaNacimiento ?></p>
                 <p>Rol: <?php echo $rol ?></p>
-
+                <p>Dirección: <?php echo $direccion ?></p>
 
                 <form action="editar_cliente.php" method="get">
                     <input type="hidden" name="id" value="<?php echo $id ?>">
                     <input type="hidden" name="usuario" value="<?php echo $usuario ?>">
+                    <input type="hidden" name="email" value="<?php echo $email ?>">
                     <input type="hidden" name="contrasena" value="<?php echo $contrasena ?>">
                     <input type="hidden" name="nombre" value="<?php echo $nombre ?>">
-                    <input type="hidden" name="apellido1" value="<?php echo $apellido1 ?>">
-                    <input type="hidden" name="apellido2" value="<?php echo $apellido2 ?>">
+                    <input type="hidden" name="apellido" value="<?php echo $apellido ?>">
                     <input type="hidden" name="fechaNacimiento" value="<?php echo $fechaNacimiento ?>">
                     <input type="hidden" name="rol" value="<?php echo $rol ?>">
-
+                    <input type="hidden" name="direccion" value="<?php echo $direccion ?>">
 
 
                     <a class="btn btn-secondary" href="index.php">Volver</a>

@@ -18,29 +18,28 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $_POST["usuario"];
+        $email = $_POST["email"];
         $contrasena = $_POST["contrasena"];
         $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         $nombre = $_POST["nombre"];
-        $apellido1 = $_POST["apellido1"];
-        $apellido2 = $_POST["apellido2"];
+        $apellido = $_POST["apellido"];
         $fechaNacimiento = $_POST["fechaNacimiento"];
         $rol = $_POST["rol"];
+        $direccion = $_POST["direccion"];
 
 
         /**Aqui se completa categoria por lo que se inserta en la tabla el cliente con el segundo apellido */
         if (
             !empty($usuario) && !empty($nombre) && !empty($contrasena) &&
-            !empty($apellido1) &&
+            !empty($apellido) &&
             !empty($fechaNacimiento) &&
-            !empty($rol)
+            !empty($rol) &&
+            !empty($direccion)
+
         ) {
 
-
-
-            $apellido2 = !empty($apellido2) ? "'$apellido2'" : "NULL";
-
-            $sql = "INSERT INTO clientes (usuario, contrasena, nombre, apellido1, apellido2, fechaNacimiento,rol) 
-            VALUES ('$usuario','$hash_contrasena','$nombre','$apellido1',$apellido2,'$fechaNacimiento','$rol')";
+            $sql = "INSERT INTO clientes (usuario, email, contrasena, nombre, apellido, fechaNacimiento, rol, direccion) 
+            VALUES ('$usuario','$email','$hash_contrasena','$nombre','$apellido','$fechaNacimiento','$rol','$direccion')";
 
 
 
@@ -76,6 +75,10 @@
                         <label class="form-label">Usuario</label>
                         <input class="form-control" type="text" name="usuario" id="usuario">
                     </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="text" name="email" id="email">
+                    </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Contraseña</label>
@@ -88,15 +91,9 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label class="form-label">Primer apellido</label>
-                        <input class="form-control" type="text" name="apellido1" id="apellido1">
+                        <label class="form-label">Apellido</label>
+                        <input class="form-control" type="text" name="apellido" id="apellido">
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">Segundo apellido</label>
-                        <input class="form-control" type="text" name="apellido2" id="apellido2">
-                    </div>
-
 
                     <div class="form-group mb-3">
                         <label class="form-label">Fecha de nacimiento</label>
@@ -111,7 +108,10 @@
                             <option value="usuario">Usuario</option>
 
                         </select>
-
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input class="form-control" type="text" name="direccion" id="apellido2">
                     </div>
 
 
