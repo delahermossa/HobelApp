@@ -36,14 +36,14 @@
 
 
     <div class="container">
-        <h1>Listado de servicios</h1>
+        <h1>Servicios dados de alta</h1>
         <a class="btn btn-info mb-3" href="insertar_servicio.php">Nuevo servicio</a>
 
         <div class="row">
             <div class="col-20">
                 <table class="table table-striped table-hover no-margin-table">
-                    <thead class="table-info">
-                        <tr>
+                    <thead class="tabla-header">
+                        <tr class="header-row">
                             <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -58,37 +58,70 @@
                     <tbody>
 
 
-                        <?php  
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $id = $_POST["id"];
+                    <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $id = $_POST["id"];
 
-                            //  Consulta para coger la ruta de la imagen y luego borrarla
-                            $sql = "SELECT imagen FROM servicios WHERE id = '$id'";
-                            $resultado = $con->query($sql);
+                    //  Consulta para coger la ruta de la imagen y luego borrarla
+                    $sql = "SELECT imagen FROM servicios WHERE id = '$id'";
+                    $resultado = $con->query($sql);
 
-                            if ($resultado->num_rows > 0) {
-                                while ($row = $resultado->fetch_assoc()) {
-                                    $imagen = $row["imagen"];
-                                }
-                                unlink("../.." . $imagen);
-                            }
+                    if ($resultado->num_rows > 0) {
+                        $row = $resultado->fetch_assoc();
+                        $imagen = $row["imagen"];
+        
+                        // Verificar si la imagen existe antes de intentar eliminarla
+                        if (file_exists("../.." . $imagen)) {
+                            // Eliminar la imagen
+                            unlink("../.." . $imagen);
+                        }
+                    }
 
-                            //  Consulta para borrar la prenda
+                    // Verificar si el servicio está asociado a citas
+                    $sql = "SELECT COUNT(*) AS count FROM clientes_servicios WHERE servicio_id = '$id'";
+                    $resultado = $con->query($sql);
+
+                    if ($resultado && $resultado->num_rows > 0) {
+                        $row = $resultado->fetch_assoc();
+                        $count  = $row["count"];
+
+                        if ($count > 0) {
+                            ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                El servicio no puede ser borrado ya que está asociado a una o varias citas.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <?php
+                        } else {
+                            //  Consulta para borrar el servicio
                             $sql = "DELETE FROM servicios WHERE id = '$id'";
 
                             if ($con->query($sql)) {
-                        ?>
+                                ?>
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    Se ha borrado el servicio
+                                    Se ha borrado el servicio.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-
-                        <?php
+                                <?php
                             } else {
-                                echo "<p>Error al borrar</p>";
+                                ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Error al borrar el servicio.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <?php
                             }
                         }
+                    } else {
                         ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Error al verificar si el servicio está asociado a citas.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
                         <?php 
 
                         $sql = "SELECT*FROM servicios";
@@ -144,8 +177,67 @@
         </div>
 
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 </body>
+ <style>
+        /* Estilos CSS para la tabla */
+        h1 {
+            padding: 20px;
+            color:#fefefe;
+            font-family: 'raleway', 'sans-serif';
+        }
+        table {
+            border-radius: 10px;
+            width: 100%;
+            background-color:#fefefe;
+            font-family: 'raleway', 'sans-serif';
+            
+
+
+        }
+        .tabla-header {
+            background-color:#0e7c61;
+            color: #fefefe;
+            height: 50px; /* Ajusta la altura de las filas según tus necesidades */
+
+            
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr.header-row {
+        height: auto; /* Establece la altura automática para la fila del encabezado */
+        }
+        tr {
+        height: 100px; /* Ajusta la altura de las filas según tus necesidades */
+        }
+        
+        /* Estilos CSS para los botones */
+        .btn {
+            background-color:#0e7c61;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            font-family: 'raleway', 'sans-serif';
+
+        }
+        
+        .btn:hover {
+            background-color:#35b293;
+        }
+        body {
+            background: linear-gradient(to right, #35b293, #fefefe);
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 
 </html>

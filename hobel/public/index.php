@@ -117,7 +117,7 @@
             <br>
             <br>
             <p>Todos los servicios disponibles a tu alrededor</p>
-            <a href="#contacto">Contacta</a>
+            <a href="../public/citas/contratar_servicio.php">Servicios</a>
         </div>
         <!-- Recurso online SVG wave generator -->
         <div class="svg-header" style="height: 250px; overflow: hidden;"><svg viewBox="0 0 500 150"

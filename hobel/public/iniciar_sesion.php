@@ -21,50 +21,58 @@
 </head>
 
 <body>
-
     
-    <?php
-    require '../util/database.php';
-   
-    ?>
-    
-    
-   
+<?php
+require '../util/database.php';
+$usuarioError = $contrasenaError = "";
 
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["usuario"])) {
+        $usuarioError = "Por favor, ingresa un usuario";
+    } else {
         $usuario = $_POST["usuario"];
-        $contrasena = $_POST["contrasena"];
+    }
 
-        $sql = "SELECT *FROM clientes where usuario ='$usuario'";
+    if (empty($_POST["contrasena"])) {
+        $contrasenaError = "Por favor, ingresa una contraseña";
+    } else {
+        $contrasena = $_POST["contrasena"];
+    }
+
+    if (!empty($usuario) && !empty($contrasena)) {
+        $sql = "SELECT * FROM clientes WHERE usuario = '$usuario'";
         $resultado = $con->query($sql);
 
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $hash_contrasena = $row["contrasena"];
-                $id=$row["id"];
-                $rol=$row["rol"];
+                $id = $row["id"];
+                $rol = $row["rol"];
             }
-            $acceso_valido =
-                password_verify($contrasena, $hash_contrasena);
+            $acceso_valido = password_verify($contrasena, $hash_contrasena);
 
-                if($acceso_valido==TRUE){
-                    echo "<h2>ACCESO VALIDO!</h2>";
+            if ($acceso_valido) {
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        ¡ACCESO VÁLIDO!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
 
-                    session_start();
-                    $_SESSION["usuario"]=$usuario;
-                    $_SESSION["rol"]=$rol;
-                    $_SESSION["cliente_id"]=$id;
+                session_start();
+                $_SESSION["usuario"] = $usuario;
+                $_SESSION["rol"] = $rol;
+                $_SESSION["cliente_id"] = $id;
 
-
-                    header('location:index.php');
-                }else{
-                    echo "<h2>CONTRASEÑA INVALIDA</h2>";
-                }
+                header('location:index.php');
+                exit;
+            } else {
+                $mensajeError = "Contraseña inválida";
+            }
+        } else {
+            $mensajeError = "Usuario no encontrado";
         }
     }
-    ?>
+}
+?>
      <header class="headerregistro">
         <nav style="height: fit-content;">
             <div class="logo">
@@ -87,25 +95,31 @@
 
         <div class="formularioregistro" id="formularioregistro">
             <div class="col-20">
-                <form action="" method="post">
-                    <div class="form-group mb-3">
-                        <label class="form-label">Usuario</label>
-                        <input class="form-control" name="usuario" type="text">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input class="form-control" name="contrasena" type="password">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <button class="btn btn-primary" type="submit">Iniciar</button>
-                    </div>
-
-                    <div class="form-group mb-3">
-                    <a class="btn btn-secondary mt-3" href="../public/registro.php">Registrarse</a>                        
-                        
-                    </div>
-                </form>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <div class="form-group mb-3">
+                <label class="form-label">Usuario</label>
+                <input class="form-control" name="usuario" type="text">
+                <span class="text-danger"><?php echo $usuarioError; ?></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label">Contraseña</label>
+                <input class="form-control" name="contrasena" type="password">
+                <span class="text-danger"><?php echo $contrasenaError; ?></span>
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-primary" type="submit">Iniciar</button>
+            </div>
+            <div class="form-group mb-3">
+                <a class="btn btn-secondary mt-3" href="../public/registro.php">Registrarse</a>
+            </div>
+            <?php if (isset($mensajeError)) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $mensajeError; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } ?>
+        </form>
+               
             </div>
         </div>
     </div>
