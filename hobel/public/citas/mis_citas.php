@@ -49,9 +49,9 @@
                 <table class="table table-striped table-hover no-margin-table">
                     <thead class="tabla-header">
                         <tr class="header-row">
-                            <th>Producto</th>
+                            <th>Servicio</th>
                             <th>Cantidad</th>
-                            <th>Precio unitario</th>
+                            <th>Precio</th>
                             <th>Subtotal</th>
                             <th>Fecha</th>
                             <th>Hora</th>
@@ -78,8 +78,8 @@
                                 <tr>
                                     <td><?php echo $servicio ?></td>
                                     <td><?php echo $cantidad ?></td>
-                                    <td><?php echo $precio_unitario ?></td>
-                                    <td><?php echo $precio_unitario * $cantidad ?></td>
+                                    <td><?php echo $precio_unitario .'€' ?></td>
+                                    <td><?php echo $precio_unitario * $cantidad .'€'?></td>
                                     <td><?php echo $fecha ?></td>
                                     <td><?php echo $hora ?></td>
 

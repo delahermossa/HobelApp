@@ -140,7 +140,7 @@
             </h2>
 
 
-            <a href="registro.html" class="cta">HAZTE HOBEL</a>
+            <a href="registro.php" class="cta">HAZTE HOBEL</a>
 
         </div>
         <div class="divimg">
