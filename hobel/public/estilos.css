@@ -188,9 +188,9 @@ html {
 }
 
 .formularioregistro {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
     width: 90%;
     max-width: 500px;
     margin: 0 auto;
@@ -199,6 +199,7 @@ html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 
@@ -619,7 +620,6 @@ input::placeholder {
 input[type="text"],
 input[type="email"] {
     display: inline-block;
-    width: 49%;
     margin-bottom: 30px;
 }
 #inputnombre::placeholder{

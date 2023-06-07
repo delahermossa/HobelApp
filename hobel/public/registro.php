@@ -214,7 +214,7 @@
 </html>
 <style>
      .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 10px;
     overflow-y: scroll;
