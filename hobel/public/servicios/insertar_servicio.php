@@ -162,7 +162,7 @@
 
             </div>
             <div class="col-2">
-                <img width="600" height="500" src="../../resources/img/servicio.png">
+                <img width="600" height="600" src="../../resources/img/servicio.png">
             </div>
         </div>
 

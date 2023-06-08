@@ -116,6 +116,9 @@
                 <a class="btn btn-secondary" href="index.php">Volver</a>
             </form>
         </div>
+        <div class="col-2">
+                <img width="600" height="600" src="../../resources/img/manage.png">
+            </div>
         
     </div>
 </div>
